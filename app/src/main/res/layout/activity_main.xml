@@ -13,11 +13,10 @@
         android:layout_height="438dp"
         android:scrollbars="vertical"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
-        app:layout_constraintBottom_toTopOf="@id/newButton"/>
+        tools:layout_editor_absoluteY="8dp"/>
 
     <Button
-        android:id="@+id/newButton"
+        android:id="@+id/newCounterButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
