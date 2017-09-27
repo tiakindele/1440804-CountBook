@@ -1,12 +1,14 @@
 package toluwani.countbook;
 
+import android.app.Activity;
+
 import java.util.Date;
 
 /**
  * Created by tiakindele on 2017-09-27.
  */
 
-public class Counter {
+public class Counter extends Activity{
     protected String counterName;
     protected Date counterDate;
     protected Integer currentVal;

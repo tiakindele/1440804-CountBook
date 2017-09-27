@@ -1,5 +1,7 @@
 package toluwani.countbook;
 
+import android.app.Activity;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -7,7 +9,7 @@ import java.util.Collection;
  * Created by tiakindele on 2017-09-27.
  */
 
-public class CounterList {
+public class CounterList extends Activity{
 
     protected ArrayList<Counter> counterList;
 
