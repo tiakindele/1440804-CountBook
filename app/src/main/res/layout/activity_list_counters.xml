@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context="toluwani.countbook.ListCountersActivity">
 
+    <ListView
+        android:id="@+id/editCountersList"
+        android:layout_width="374dp"
+        android:layout_height="438dp"
+        android:scrollbars="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"/>
     <Button
         android:id="@+id/doneEditingButton"
         android:layout_width="wrap_content"

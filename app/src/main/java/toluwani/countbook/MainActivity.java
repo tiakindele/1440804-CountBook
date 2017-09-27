@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewClicked(View view) {
         if(view.getId() == R.id.newCounterButton){
+
             Intent i = new Intent(MainActivity.this, AddNewCounter.class);
             startActivity(i);
         }

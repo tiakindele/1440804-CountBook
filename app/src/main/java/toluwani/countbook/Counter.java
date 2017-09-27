@@ -1,7 +1,11 @@
 package toluwani.countbook;
 
 import android.app.Activity;
+import android.text.Editable;
+import android.text.format.DateFormat;
+import android.widget.EditText;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -10,24 +14,24 @@ import java.util.Date;
 
 public class Counter extends Activity{
     protected String counterName;
-    protected Date counterDate;
+    protected String counterDate;
     protected Integer currentVal;
     protected Integer initialVal;
     protected String commentString;
+    private Date local_date;
 
-    public Counter(String counterName, Date counterDate, Integer currentVal, Integer initialVal,
-                   String commentString) {
+    public Counter(String counterName) {
         this.counterName = counterName;
-        this.counterDate = counterDate;
-        this.currentVal = currentVal;
-        this.initialVal = initialVal;
-        this.commentString = commentString;
+        this.counterDate = getCounterDate();
+        this.currentVal = getCurrentVal();
+        this.initialVal = getInitialVal();
+        this.commentString = getCommentString();
     }
 
     public String getCounterName() {
         return counterName;
     }
-    public Date getCounterDate() {
+    public String getCounterDate() {
         return counterDate;
     }
     public Integer getCurrentVal() {
@@ -38,5 +42,15 @@ public class Counter extends Activity{
     }
     public String getCommentString() {
         return commentString;
+    }
+
+    public void getCounterCreateDate() {
+
+
+
+    }
+
+    public void getCounterUpdateDate() {
+
     }
 }

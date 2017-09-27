@@ -17,7 +17,7 @@ public class CounterList extends Activity{
         counterList = new ArrayList<Counter>();
     }
 
-    public Collection<Counter> getCounters() {
+    public ArrayList<Counter> getCounters() {
         return counterList;
     }
 
@@ -36,4 +36,6 @@ public class CounterList extends Activity{
     public boolean contains(Counter counter) {
         return counterList.contains(counter);
     }
+
+
 }
