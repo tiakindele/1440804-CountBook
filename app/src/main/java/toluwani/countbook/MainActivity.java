@@ -48,14 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view,
-                                    int pos, long id) {
-                Intent i = new Intent(MainActivity.this, Counter.class);
-                startActivity(i);
-            }
-        });
+
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view,
@@ -78,7 +71,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 adb.show();
-                return false;
+                return true;
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view,
+                                    int pos, long id) {
+                Intent i = new Intent(MainActivity.this, Counter.class);
+                startActivity(i);
             }
         });
     }
