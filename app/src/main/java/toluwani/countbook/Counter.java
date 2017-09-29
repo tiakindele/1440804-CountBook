@@ -44,6 +44,10 @@ public class Counter extends Activity{
         return commentString;
     }
 
+    public String toString() {
+        return getCounterName();
+    }
+
     public void getCounterCreateDate() {
 
 

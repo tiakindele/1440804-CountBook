@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="toluwani.countbook.MainActivity">
 
-
     <ListView
         android:id="@+id/counterContent"
         android:layout_width="374dp"

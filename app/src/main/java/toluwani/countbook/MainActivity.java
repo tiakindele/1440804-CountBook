@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -32,11 +33,35 @@ public class MainActivity extends AppCompatActivity {
         counterView = (TextView)findViewById(R.id.counterView);
         ListView listView = (ListView)findViewById(R.id.counterContent);
         Collection<Counter> counters = CounterListController.getCounterList().getCounters();
-        ArrayList<Counter> list = new ArrayList<Counter>(counters);
-        ArrayAdapter<Counter> counterAdapter = new ArrayAdapter<Counter>(this,
+        final ArrayList<Counter> list = new ArrayList<Counter>(counters);
+        final ArrayAdapter<Counter> counterAdapter = new ArrayAdapter<Counter>(this,
                 android.R.layout.simple_list_item_1, list);
         listView.setAdapter(counterAdapter);
 
+        CounterListController.getCounterList().addListener(new Listener() {
+            @Override
+            public void update() {
+                list.clear();
+                Collection<Counter> counters = CounterListController.getCounterList().getCounters();
+                list.addAll(counters);
+                counterAdapter.notifyDataSetChanged();
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view,
+                                           int pos, long id) {
+                Toast.makeText(MainActivity.this,
+                    list.get(pos).toString() + " deleted!", Toast.LENGTH_SHORT
+                ).show();
+
+                Counter counter = list.get(pos);
+                CounterListController.getCounterList().removeCounter(counter);
+
+                return false;
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

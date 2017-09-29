@@ -33,7 +33,6 @@ public class AddNewCounter extends Activity{
         setContentView(R.layout.add_new_counter);
     }
 
-
     @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void saveNewClicked(View view) {
