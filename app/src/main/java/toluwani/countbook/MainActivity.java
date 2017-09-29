@@ -6,20 +6,37 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+
+import static android.R.id.list;
 
 public class MainActivity extends AppCompatActivity {
 
     private int countInt = 0;
     private TextView counterView;
+    private ArrayList<String> arrayList;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         counterView = (TextView)findViewById(R.id.counterView);
+        ListView listView = (ListView)findViewById(R.id.counterContent);
+        Collection<Counter> counters = CounterListController.getCounterList().getCounters();
+        ArrayList<Counter> list = new ArrayList<Counter>(counters);
+        ArrayAdapter<Counter> counterAdapter = new ArrayAdapter<Counter>(this,
+                android.R.layout.simple_list_item_1, list);
+        listView.setAdapter(counterAdapter);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
