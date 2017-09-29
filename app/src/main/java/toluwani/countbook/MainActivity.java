@@ -1,6 +1,8 @@
 package toluwani.countbook;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -48,17 +50,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view,
+                                    int pos, long id) {
+                Intent i = new Intent(MainActivity.this, Counter.class);
+                startActivity(i);
+            }
+        });
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view,
                                            int pos, long id) {
-                Toast.makeText(MainActivity.this,
-                    list.get(pos).toString() + " deleted!", Toast.LENGTH_SHORT
-                ).show();
-
-                Counter counter = list.get(pos);
-                CounterListController.getCounterList().removeCounter(counter);
-
+                AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
+                adb.setMessage("Are you sure you want to delete " +list.get(pos).toString()+"?");
+                adb.setCancelable(true);
+                final int finalPos = pos;
+                adb.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Counter counter = list.get(finalPos);
+                        CounterListController.getCounterList().removeCounter(counter);
+                    }
+                });
+                adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int j) {
+                        //do nothing
+                    }
+                });
+                adb.show();
                 return false;
             }
         });

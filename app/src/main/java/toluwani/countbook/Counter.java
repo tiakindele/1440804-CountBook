@@ -1,6 +1,8 @@
 package toluwani.countbook;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.format.DateFormat;
 import android.widget.EditText;
@@ -13,6 +15,14 @@ import java.util.Date;
  */
 
 public class Counter extends Activity{
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.counter);
+    }
+
     protected String counterName;
     protected String counterDate;
     protected Integer currentVal;
@@ -50,11 +60,11 @@ public class Counter extends Activity{
 
     public void getCounterCreateDate() {
 
-
-
     }
 
     public void getCounterUpdateDate() {
 
     }
+
+
 }
