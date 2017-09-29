@@ -1,11 +1,14 @@
 package toluwani.countbook;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,19 +19,28 @@ import java.util.Date;
 
 public class Counter extends Activity{
 
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.counter);
-    }
-
+    private int countInt = 0;
+    private TextView counterView;
+    private TextView nameView;
     protected String counterName;
     protected String counterDate;
     protected Integer currentVal;
     protected Integer initialVal;
     protected String commentString;
     private Date local_date;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.counter);
+        counterView = (TextView)findViewById(R.id.counterView);
+        nameView = (TextView)findViewById(R.id.itemName);
+        //nameView.setText(String.valueOf(getCounterName()));
+        nameView.setText("Item Name");
+    }
+
+    public Counter() {
+
+    }
 
     public Counter(String counterName) {
         this.counterName = counterName;
@@ -64,6 +76,27 @@ public class Counter extends Activity{
 
     public void getCounterUpdateDate() {
 
+    }
+
+    public void incrementClicked(View view) {
+        countInt++;
+        counterView.setText(String.valueOf(countInt));
+    }
+
+    public void decrementClicked(View view) {
+        countInt--;
+        counterView.setText(String.valueOf(countInt));
+    }
+
+    public void backClicked(View view) {
+        Intent i = new Intent(Counter.this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void deleteClicked(View view) {
+    }
+
+    public void resetClicked(View view) {
     }
 
 

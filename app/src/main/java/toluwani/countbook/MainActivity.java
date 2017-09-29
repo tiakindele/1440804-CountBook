@@ -23,8 +23,7 @@ import static android.R.id.list;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int countInt = 0;
-    private TextView counterView;
+
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> adapter;
 
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        counterView = (TextView)findViewById(R.id.counterView);
         ListView listView = (ListView)findViewById(R.id.counterContent);
         Collection<Counter> counters = CounterListController.getCounterList().getCounters();
         final ArrayList<Counter> list = new ArrayList<Counter>(counters);
@@ -94,25 +92,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"Edit Counters", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ListCountersActivity.class);
         startActivity(intent);
-    }
-
-    public void incrementClicked(View view) {
-        countInt++;
-        counterView.setText(String.valueOf(countInt));
-    }
-
-    public void decrementClicked(View view) {
-        countInt--;
-        counterView.setText(String.valueOf(countInt));
-    }
-
-    public void editClicked(View view) {
-    }
-
-    public void deleteClicked(View view) {
-    }
-
-    public void resetClicked(View view) {
     }
 
     public void addNewClicked(View view) {
