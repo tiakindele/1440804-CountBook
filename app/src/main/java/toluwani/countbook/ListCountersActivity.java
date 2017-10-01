@@ -8,10 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ListCountersActivity extends AppCompatActivity {
+public class ListCountersActivity extends AppCompatActivity{
 
     private TextView counterView;
     private ArrayList<String> arrayList;

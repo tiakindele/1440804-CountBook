@@ -6,7 +6,7 @@
 
 
     <EditText
-        android:id="@+id/addItemField"
+        android:id="@+id/updatedAddItemField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -15,17 +15,17 @@
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_above="@+id/addDateField"/>
+        android:layout_above="@+id/updatedAddDateField"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/addItemField"
-        android:layout_below="@id/addItemField"
+        android:layout_alignLeft="@id/updatedAddItemField"
+        android:layout_below="@id/updatedAddItemField"
         android:layout_marginLeft="10dp"
-        android:text="Name"/>
+        android:text="New Name"/>
 
     <EditText
-        android:id="@+id/addDateField"
+        android:id="@+id/updatedAddDateField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,17 +34,18 @@
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_above="@+id/initialValueField"/>
+        android:layout_above="@+id/updatedInitialValueField"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/addItemField"
-        android:layout_below="@id/addDateField"
+        android:layout_alignLeft="@id/updatedAddDateField"
+        android:layout_below="@id/updatedAddDateField"
         android:layout_marginLeft="10dp"
-        android:text="Date (yyyy-mm-dd)"/>
+        android:text="New Date (yyyy-mm-dd)"/>
 
     <EditText
-        android:id="@+id/initialValueField"
+        android:id="@+id/updatedInitialValueField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -53,17 +54,18 @@
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_above="@+id/commentField"/>
+        android:layout_above="@+id/updatedCommentField"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/addItemField"
-        android:layout_below="@id/initialValueField"
+        android:layout_alignLeft="@id/updatedInitialValueField"
+        android:layout_below="@id/updatedInitialValueField"
         android:layout_marginLeft="10dp"
-        android:text="Initial Value"/>
+        android:text="New Initial Value"/>
 
     <EditText
-        android:id="@+id/commentField"
+        android:id="@+id/updatedCommentField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -72,26 +74,27 @@
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_above="@+id/saveNewButton"/>
+        android:layout_above="@+id/updateButton"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/addItemField"
-        android:layout_below="@id/commentField"
+        android:layout_alignLeft="@id/updatedCommentField"
+        android:layout_below="@id/updatedCommentField"
         android:layout_marginLeft="10dp"
-        android:text="Comment"/>
+        android:text="New Comment"/>
 
     <Button
-        android:id="@+id/saveNewButton"
+        android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:text="ADD"
+        android:text="UPDATE"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:onClick="saveNewClicked"/>
+        android:onClick="updateClicked"/>
 
 </RelativeLayout>

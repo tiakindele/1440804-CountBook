@@ -14,6 +14,7 @@
             android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Item Name"
             android:textSize="40dp"
             android:textStyle="bold" />
 
@@ -73,15 +74,7 @@
             android:layout_marginBottom="10dp"
             android:ems="5"
             android:onClick="resetClicked"/>
-        <Button
-            android:id="@+id/deleteCounterButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="delete"
-            android:textSize="30dp"
-            android:layout_marginBottom="10dp"
-            android:ems="5"
-            android:onClick="deleteClicked"/>
+
         <Button
             android:id="@+id/editCounterButton"
             android:layout_width="wrap_content"
@@ -102,6 +95,7 @@
         android:layout_below="@+id/counterOptionsLayout">
 
         <TextView
+            android:id="@+id/values"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Initial Value "

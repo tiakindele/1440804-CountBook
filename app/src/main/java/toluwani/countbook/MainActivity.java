@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,29 +16,32 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
 import static android.R.id.list;
 
-public class MainActivity extends AppCompatActivity {
-
-
+public class MainActivity extends AppCompatActivity implements Serializable{
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        CounterListManager.initManager(this.getApplicationContext());
+
         ListView listView = (ListView)findViewById(R.id.counterContent);
         Collection<Counter> counters = CounterListController.getCounterList().getCounters();
         final ArrayList<Counter> list = new ArrayList<Counter>(counters);
         final ArrayAdapter<Counter> counterAdapter = new ArrayAdapter<Counter>(this,
                 android.R.layout.simple_list_item_1, list);
         listView.setAdapter(counterAdapter);
-
+        counterCount(); //problem is here *debugging
         CounterListController.getCounterList().addListener(new Listener() {
             @Override
             public void update() {
@@ -82,6 +86,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void counterCount() {
+        CounterListController cl = new CounterListController();
+        int size = cl.getCounterList().getCounterCount();
+        Integer ccObject = size;
+
+        TextView txtView = (TextView) findViewById(R.id.itemName);
+        //txtView.setText(ccObject.toString());
+        //String hello = "Hello";
+        //txtView.setText(hello);
+//        Log.d("D", "##########CHECK CHECK CHECK#############");
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
