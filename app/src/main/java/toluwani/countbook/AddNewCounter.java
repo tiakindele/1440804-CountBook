@@ -1,38 +1,33 @@
+/**
+ * Add New Counter
+ *
+ * AddNewCounter class will help users add new counters and the necessary information
+ * into the CountBook. It takes in item name, date, initial value and the comment.
+ * It also uses the initial value as the current value (for now).
+ * As for date, if it's not filled out, the current date will replace it.
+ *
+ * Oct 1 2017
+ *
+ * Decided on this format because it's simplicity. All the necessary information
+ * is taken in from the user and sent to Count book with little room for error.
+ * I used log messages to check the output and to the best of my knowledge,
+ * this part of the code works fine.
+ */
+
 package toluwani.countbook;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.MainThread;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-
-import static android.R.id.list;
-import static toluwani.countbook.R.id.addItemField;
-import static toluwani.countbook.R.id.editCountersList;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 
 /**
@@ -46,6 +41,11 @@ public class AddNewCounter extends Activity{
         setContentView(R.layout.add_new_counter);
     }
 
+    /**
+     * When new information is added, it is confirmed by clicking DONE.
+     * When DONE is clicked, all the information is passed to the controller.
+     * @param view
+     */
     @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void saveNewClicked(View view) {
@@ -70,12 +70,12 @@ public class AddNewCounter extends Activity{
             }
         }
 
+
         Counter counter = new Counter(name.getText().toString(),
                 date,
                 Integer.parseInt(String.valueOf(iniVal.getText())),
                 Integer.parseInt(String.valueOf(curVal.getText())),
                 cmmntVal.getText().toString());
-        //Log.d("D", "###### addItemField: "+ name.getText().toString() +"CHECK CHECK CHECK#############");
         clc.addCounter(counter);
         Intent i = new Intent(AddNewCounter.this, MainActivity.class);
         startActivity(i);
