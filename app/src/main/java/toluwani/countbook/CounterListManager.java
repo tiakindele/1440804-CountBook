@@ -1,3 +1,18 @@
+/**
+ * Counter List Manager
+ *
+ * This manages the list and should act as the control space for the counters
+ * entering and leaving the application.
+ *
+ * Oct 01 2017
+ *
+ * This class was built with the help of the Student Picker YouTube playlist by
+ * Abram Hindle. However, the process and reason for this class is very clear to me.
+ *
+ * The loads and saves work in the beginning but don't work once a Counter is selected.
+ * The theory behind the process is correct to the best of my knowledge though.
+ */
+
 package toluwani.countbook;
 
 /**
@@ -22,6 +37,10 @@ public class CounterListManager {
 
     static private CounterListManager counterListManager = null;
 
+    /**
+     * Initializes the manager
+     * @param context context to manage
+     */
     public static void initManager(Context context) {
         if (counterListManager == null) {
             if (context == null) {
@@ -31,7 +50,10 @@ public class CounterListManager {
         }
     }
 
-    // returns manager
+    /**
+     * Returns a manager needed by another process
+     * @return returns the manager needed
+     */
     public static CounterListManager getManager() {
         if (counterListManager == null) {
             throw new RuntimeException("Manager was not initialized");
@@ -39,11 +61,21 @@ public class CounterListManager {
         return counterListManager;
     }
 
+    /**
+     * Setter for context in Manager Class
+     * @param context sets the context being referred to
+     */
     public CounterListManager(Context context) {
         this.context = context;
     }
 
-    // retrieves counterList from storing; SharedPreferences method
+    /**
+     * Gets Counter List from storage
+     * Uses sharedPreferences method
+     * @return returns new counter list or a previously added one
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public CounterList loadCounterList() throws IOException, ClassNotFoundException {
         SharedPreferences settings = context.getSharedPreferences(prefFile, Context.MODE_PRIVATE);
         String counterListData = settings.getString(clKey, "");
@@ -54,7 +86,12 @@ public class CounterListManager {
         }
     }
 
-    // stores counterList into storage; SharedPreferences method
+    /**
+     * Stores Counter List
+     * SharedPreferences method
+     * @param cl Counter List to be saved to
+     * @throws IOException
+     */
     public void saveCounterList(CounterList cl) throws IOException {
         SharedPreferences settings = context.getSharedPreferences(prefFile, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
@@ -62,16 +99,28 @@ public class CounterListManager {
         editor.commit();
     }
 
-
-    // converts to a counterList object from string
-    static public CounterList counterListFromString(String counterListData) throws IOException, ClassNotFoundException {
-        ByteArrayInputStream bi = new ByteArrayInputStream(Base64.decode(counterListData, Base64.DEFAULT));
+    /**
+     * Converts String to counterList object
+     * @param counterListData data needed to be converted from String to counterList object
+     * @return returns converted data
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    static public CounterList counterListFromString(String counterListData) throws IOException,
+            ClassNotFoundException {
+        ByteArrayInputStream bi = new ByteArrayInputStream(Base64.decode(counterListData,
+                Base64.DEFAULT));
         ObjectInputStream oi = new ObjectInputStream(bi);
         return (CounterList) oi.readObject();
 
     }
 
-    // converts from a counterList object to a string
+    /**
+     * Converts to String from counterList object
+     * @param cl counter list to be accessed
+     * @return returns String form of data
+     * @throws IOException
+     */
     static public String counterListToString(CounterList cl) throws IOException {
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
         ObjectOutputStream oo = new ObjectOutputStream(bo);
