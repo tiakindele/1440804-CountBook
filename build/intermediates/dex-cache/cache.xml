@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/tiakindele/Documents/FALL 17/301/1440804-CountBook/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c7ad6ee187a2820fda1e9dd0eaa4f109613bedd8">
+        <dex dex="/Users/tiakindele/Documents/FALL 17/301/1440804-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d50bd0f173cf437b172d02379e2ff1428cef3cf1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tiakindele/Documents/FALL 17/301/1440804-CountBook/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/tiakindele/Documents/FALL 17/301/1440804-CountBook/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_9889fe0b9b7f2884d5711b59f9f53e0c6c724b53/classes.dex" />
+    </item>
+
+</items>
