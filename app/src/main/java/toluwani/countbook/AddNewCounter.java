@@ -77,6 +77,7 @@ public class AddNewCounter extends Activity{
                 Integer.parseInt(String.valueOf(curVal.getText())),
                 cmmntVal.getText().toString());
         clc.addCounter(counter);
+
         Intent i = new Intent(AddNewCounter.this, MainActivity.class);
         startActivity(i);
     }

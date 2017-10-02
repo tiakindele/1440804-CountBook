@@ -4,12 +4,10 @@
  * This is the first page the user sees. On this page, the user can
  * also add a new counter and see a list of counters they have added.
  * Long tapping gives the option deleting the counter.
- * Listeners kept the
+ * Next to the Add New Counter button, there is a tracker that keeps count of
+ * how many items have been added. It's also updated when an item is deleted.
  *
  * Oct 01 2017
- *
- * I was unable to implement a counter for the Counters (to keep track
- * of how many counters have been added).
  *
  * The edit menu button was supposed to lead to the extra edit page but I
  * was not able to properly implement the edit page. However, the button
@@ -23,12 +21,15 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.LogPrinter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -40,6 +41,8 @@ import java.util.Collection;
  */
 
 public class MainActivity extends AppCompatActivity implements Serializable{
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
 
         // Attempt to count the number of counters
         counterCount();
-        CounterListController.getCounterList().addListener(new Listener() {
+            CounterListController.getCounterList().addListener(new Listener() {
             @Override
             public void update() {
                 list.clear();
@@ -80,6 +83,12 @@ public class MainActivity extends AppCompatActivity implements Serializable{
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Counter counter = list.get(finalPos);
                         CounterListController.getCounterList().removeCounter(counter);
+                        int size = CounterListController.getCounterList().getCounterCount();
+                        int clInt = size;
+
+                        // when DELETE is clicked, update the item counter on the main page
+                        TextView itemCountView = (TextView) findViewById(R.id.itemCounter);
+                        itemCountView.setText(String.valueOf(clInt));
                     }
                 });
                 adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -105,10 +114,15 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     }
 
     /**
-     * Non functioning attempt to keep track of number of counters
+     * Sets the item counter on the main page which shows
+     * the number of items that has been added
      */
     private void counterCount() {
         CounterListController cl = new CounterListController();
+        int size = cl.getCounterList().getCounterCount();
+        int clInt = size;
+        TextView itemCountView = (TextView) findViewById(R.id.itemCounter);
+        itemCountView.setText(String.valueOf(clInt));
     }
 
     /**

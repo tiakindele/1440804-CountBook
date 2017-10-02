@@ -94,26 +94,6 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/counterOptionsLayout">
 
-        <TextView
-            android:id="@+id/values"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Initial Value "
-            android:textSize="15dp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Comments "
-            android:textSize="15dp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date Modified "
-            android:textSize="15dp"
-            android:layout_marginBottom="10dp"/>
-
     </LinearLayout>
 
 </RelativeLayout>
